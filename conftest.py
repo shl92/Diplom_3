@@ -20,8 +20,7 @@ def driver(request):
         driver = webdriver.Chrome(options=chrome_options)
     elif browser_name == "firefox":
         options_firefox = webdriver.FirefoxOptions()
-        #options_firefox.add_argument('--window-size=1280,1024')
-        #options_firefox.add_argument('--headless')
+        options_firefox.add_argument('--window-size=1280,1024')
         driver = webdriver.Firefox(options=options_firefox)
     else:
         raise pytest.UsageError("--browser_name should be chrome or firefox")
