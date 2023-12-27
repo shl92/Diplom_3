@@ -22,7 +22,7 @@ class TestMainPage:
     def test_orders_feed_button_click(self, driver, login_user):
         main_page = MainPage(driver, URLS.MAIN_PAGE)
         main_page.click_orders_feed_button()
-        feed_page = FeedPage(driver, URLS.FEED_PAGE)
+        feed_page = FeedPage(driver, URLS.MAIN_PAGE + URLS.FEED_PAGE)
         feed_page.check_text_order_feed_on_feed_page()
 
     @allure.title("Проверка появления всплывающего окна после клика на ингредиент")

@@ -11,7 +11,7 @@ class TestFeedPage:
     @allure.description("Логин в систему, открытие страницы ленты заказов, клик на карточку с заказом, проверка "
                         "наличия текста 'Состав' во всплывающей карточке заказа")
     def test_open_order_card(self, driver, login_user):
-        feed_page = FeedPage(driver, URLS.FEED_PAGE)
+        feed_page = FeedPage(driver, URLS.MAIN_PAGE + URLS.FEED_PAGE)
         feed_page.open_page()
         feed_page.click_on_first_order_card()
         feed_page.check_order_card_opened()
@@ -24,9 +24,9 @@ class TestFeedPage:
         main_page = MainPage(driver, URLS.MAIN_PAGE)
         order_id = main_page.create_order()
         main_page.click_profile_button()
-        profile_page = ProfilePage(driver, URLS.PROFILE_PAGE)
+        profile_page = ProfilePage(driver, URLS.MAIN_PAGE + URLS.PROFILE_PAGE)
         profile_page.click_orders_history_link()
-        feed_page = FeedPage(driver, URLS.MAIN_PAGE)
+        feed_page = FeedPage(driver, URLS.MAIN_PAGE + URLS.FEED_PAGE)
         feed_page.check_order_id_in_history_id(order_id)
         main_page.click_orders_feed_button()
         feed_page.check_order_id_in_feed(order_id)
@@ -36,7 +36,7 @@ class TestFeedPage:
                         "всё время, переходим в конструктор, создаем заказ, открываем страницу 'Лента заказов', "
                         "сравниваем значение счетчика с предыдущим")
     def test_feed_page_increase_all_time_counter(self, driver, login_user):
-        feed_page = FeedPage(driver, URLS.FEED_PAGE)
+        feed_page = FeedPage(driver, URLS.MAIN_PAGE + URLS.FEED_PAGE)
         feed_page.open_page()
         counter_before = feed_page.check_number_or_all_time_orders()
         main_page = MainPage(driver, URLS.MAIN_PAGE)
@@ -51,7 +51,7 @@ class TestFeedPage:
                         "сегодня, переходим в конструктор, создаем заказ, открываем страницу 'Лента заказов', "
                         "сравниваем значение счетчика с предыдущим")
     def test_feed_page_increase_today_counter(self, driver, login_user):
-        feed_page = FeedPage(driver, URLS.FEED_PAGE)
+        feed_page = FeedPage(driver, URLS.MAIN_PAGE + URLS.FEED_PAGE)
         feed_page.open_page()
         counter_before = feed_page.check_number_of_today_counter()
         main_page = MainPage(driver, URLS.MAIN_PAGE)
@@ -66,6 +66,6 @@ class TestFeedPage:
     def test_feed_page_orders_in_work(self, driver, login_user):
         main_page = MainPage(driver, URLS.MAIN_PAGE)
         order_id = main_page.create_order()
-        feed_page = FeedPage(driver, URLS.FEED_PAGE)
+        feed_page = FeedPage(driver, URLS.MAIN_PAGE + URLS.FEED_PAGE)
         feed_page.open_page()
         feed_page.check_order_id_in_list_of_orders_in_work(order_id)

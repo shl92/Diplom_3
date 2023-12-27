@@ -5,7 +5,7 @@ class MainPageLocators:
     PROFILE = (By.XPATH, "//p[text()='Личный Кабинет']/parent::a")
     CONSTRUCTOR_BUTTON = (By.XPATH, "//p[text()='Конструктор']")
     ORDER_FEED_BUTTON = (By.XPATH, "//p[text()='Лента Заказов']/parent::a")
-    CREATE_BURGER_TEXT = (By.TAG_NAME, "h1")
+    CREATE_BURGER_TEXT = (By.XPATH, "//h1[text()='Соберите бургер']")
     INGREDIENT_SAUCE = (By.XPATH, "//img[@alt='Соус Spicy-X']")
     INGREDIENT_BUN = (By.XPATH, "//img[@alt='Краторная булка N-200i']")
     LIST_OF_INGREDIENTS = (By.XPATH, "//h2[text()='Булки']/following-sibling::ul/")

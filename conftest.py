@@ -31,19 +31,15 @@ def driver(request):
 @pytest.fixture
 def create_new_user_with_delete():
     user_data = ProfileMethods.generate_user()
-    response = requests.post(ENDPOINTS.CREATE_USER, user_data)
-    assert response.status_code == 200, (f"Пользователь не создан. Ожидаемый статус: 200, Фактический: "
-                                         f"{response.status_code}")
+    response = requests.post(URLS.MAIN_PAGE + ENDPOINTS.CREATE_USER, user_data)
     yield user_data, response
     headers = {'Authorization': response.json()['accessToken']}
-    response_delete = requests.delete(ENDPOINTS.DELETE_USER, headers=headers)
-    assert response_delete.status_code == 202, (f"Пользователь не удален. Ожидаемый статус: 202, Фактический: "
-                                                f"{response.status_code}")
+    requests.delete(URLS.MAIN_PAGE + ENDPOINTS.DELETE_USER, headers=headers)
 
 
 @pytest.fixture
 def login_user(driver, create_new_user_with_delete):
     user_data = create_new_user_with_delete[0]
-    login_page = LoginPage(driver, URLS.LOGIN_PAGE)
+    login_page = LoginPage(driver, URLS.MAIN_PAGE + URLS.LOGIN_PAGE)
     login_page.open_page()
     login_page.login(user_data['email'], user_data['password'])

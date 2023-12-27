@@ -1,11 +1,11 @@
 class URLS:
     MAIN_PAGE = "https://stellarburgers.nomoreparties.site/"
-    LOGIN_PAGE = "https://stellarburgers.nomoreparties.site/login"
-    PROFILE_PAGE = "https://stellarburgers.nomoreparties.site/account/profile"
-    RESTORE_PAGE = "https://stellarburgers.nomoreparties.site/forgot-password"
-    FEED_PAGE = "https://stellarburgers.nomoreparties.site/feed"
+    LOGIN_PAGE = "login"
+    PROFILE_PAGE = "account/profile"
+    RESTORE_PAGE = "forgot-password"
+    FEED_PAGE = "feed"
 
 
 class ENDPOINTS:
-    CREATE_USER = "https://stellarburgers.nomoreparties.site/api/auth/register"
-    DELETE_USER = "https://stellarburgers.nomoreparties.site/api/auth/user"
+    CREATE_USER = "api/auth/register"
+    DELETE_USER = "api/auth/user"

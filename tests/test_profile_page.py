@@ -12,7 +12,7 @@ class TestProfilePage:
     def test_profile_button_click(self, driver, login_user):
         main_page = MainPage(driver, URLS.MAIN_PAGE)
         main_page.click_profile_button()
-        profile_page = ProfilePage(driver, URLS.PROFILE_PAGE)
+        profile_page = ProfilePage(driver, URLS.MAIN_PAGE + URLS.PROFILE_PAGE)
         profile_page.check_save_button_on_profile_page()
 
     @allure.title("Проверка перехода в раздел 'История заказов' по клику на ссылку 'История заказов'")
@@ -21,7 +21,7 @@ class TestProfilePage:
     def test_orders_history_link_click(self, driver, login_user):
         main_page = MainPage(driver, URLS.MAIN_PAGE)
         main_page.click_profile_button()
-        profile_page = ProfilePage(driver, URLS.PROFILE_PAGE)
+        profile_page = ProfilePage(driver, URLS.MAIN_PAGE + URLS.PROFILE_PAGE)
         profile_page.click_orders_history_link()
         profile_page.check_history_button_is_active()
 
@@ -31,6 +31,6 @@ class TestProfilePage:
     def test_exit_profile(self, driver, login_user):
         main_page = MainPage(driver, URLS.MAIN_PAGE)
         main_page.click_profile_button()
-        profile_page = ProfilePage(driver, URLS.PROFILE_PAGE)
+        profile_page = ProfilePage(driver, URLS.MAIN_PAGE + URLS.PROFILE_PAGE)
         profile_page.click_exit_profile_link()
         profile_page.check_login_button_after_exit_from_profile()
